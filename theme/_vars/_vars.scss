@@ -27,3 +27,10 @@ $disabled: #EEEEEE;
 
 // disabled font color
 $disabledText: #B4B4B4;
+
+// block border shadow
+$block-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
+$block-radius: 4px;
+
+// block hover border shadow
+$block-hover-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.32);
