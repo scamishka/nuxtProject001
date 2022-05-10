@@ -1,0 +1,7 @@
+@import "../_mixins/font-face";
+
+// font-family: 'Source-Sans-Pro-Regular', sans-serif
+@include font('Source-Sans-Pro-Regular', normal, 400, '/fonts/SourceSansPro/Regular/Source-Sans-Pro-Regular.woff2');
+
+// font-family: 'Sourse-Sans-Pro-Bold', sans-serif
+@include font('Source-Sans-Pro-Bold', normal, 400, '/fonts/SourceSansPro/Bold/Source-Sans-Pro-Bold.woff2');

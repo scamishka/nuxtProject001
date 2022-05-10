@@ -1,0 +1,64 @@
+@import "_vars/vars";
+@import "_fonts/fonts";
+
+/*  ----------------------------------------------------------------
+/*  >>> TABLE OF CONTENTS:
+/*  ----------------------------------------------------------------
+/*  1. Body
+/*  2. Selection
+/*  3. Buttons
+/*  4. Select
+/*  --------------------------------------------------------------*/
+
+/*  ----------------------------------------------------------------
+/*  1. Body
+/*  --------------------------------------------------------------*/
+body {
+  font-family: $default-font;
+  font-size: $font-size;
+  color: $font-color;
+  background: $background;
+}
+
+/*  --------------------------------------------------------------*/
+/*  2. Selection
+/*  --------------------------------------------------------------*/
+*::selection {
+  background: $link;
+  color: $font-color;
+
+}
+
+/*  --------------------------------------------------------------*/
+/*  3. Buttons
+/*  --------------------------------------------------------------*/
+button {
+  cursor: pointer;
+}
+
+button:focus,
+button:active {
+  outline: none;
+}
+
+/*  --------------------------------------------------------------*/
+/*  4. Select
+/*  --------------------------------------------------------------*/
+select {
+  width: 121.49px;
+  height: 36px;
+  background: #FFFEFB;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 4px;
+  font-family: $default-font;
+  font-size: 12px;
+  line-height: 15px;
+  color: $disabledText;
+  text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+
+}
