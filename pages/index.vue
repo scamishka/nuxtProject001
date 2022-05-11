@@ -59,7 +59,6 @@
 
 <script>
 import CartItem from "../components/CartItem";
-import CreateCartForm from "../components/createCartForm";
 export default {
   name: 'IndexPage',
   components: {CartItem},
@@ -155,6 +154,8 @@ export default {
       //flex-grow: 1;
       flex-shrink: 0;
       padding: 0 8px;
+      margin-bottom: 16px;
+
       &__wrapper {
         padding: 24px;
         background: #FFFEFB;
@@ -226,9 +227,32 @@ export default {
       justify-content: flex-start;
       flex-wrap: wrap;
     }
-
   }
-
 }
+@include md-desktop() {
+  .body-block {
+    .content-body {
+      &__sidebar {
+        width: 50%;
+      }
 
+      &__main {
+        width: 50%;
+      }
+    }
+  }
+}
+@include sm-mobile() {
+  .body-block {
+    .content-body {
+      &__sidebar {
+        width: 100%;
+      }
+
+      &__main {
+        width: 100%;
+      }
+    }
+  }
+}
 </style>

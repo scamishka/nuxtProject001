@@ -64,12 +64,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
   .item {
     position: relative;
     flex-grow: 1;
     width: 30%;
-    max-width: 30%;
+    max-width: 34%;
     box-sizing:border-box;
     min-height: 200px;
     background: #FFFEFB;
@@ -77,7 +76,6 @@ export default {
     border-radius: $block-radius;
     margin: 0 8px 16px;
     cursor: pointer;
-
     &:hover {
       box-shadow: $block-hover-shadow;
     }
@@ -91,7 +89,7 @@ export default {
       &__header {
         h2 {
           font-size: 20px;
-          font-weight: 600px;
+          font-weight: 600;
           line-height: 25px;
           color: $title;
           margin: 0;
@@ -135,6 +133,24 @@ export default {
           box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
         }
       }
+    }
+  }
+  @include lg-desktop() {
+    .item {
+      width: 47%;
+      max-width: 48%;
+    }
+  }
+  @include md-desktop() {
+    .item {
+      width: auto;
+      max-width: fit-content;
+    }
+  }
+  @include sm-mobile() {
+    .item {
+      width: auto;
+      max-width: fit-content;
     }
   }
 </style>
