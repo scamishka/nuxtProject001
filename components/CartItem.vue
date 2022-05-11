@@ -68,12 +68,14 @@ export default {
   .item {
     position: relative;
     flex-grow: 1;
-    max-width: 33%;
+    width: 30%;
+    max-width: 30%;
+    box-sizing:border-box;
     min-height: 200px;
     background: #FFFEFB;
     box-shadow: $block-shadow;
     border-radius: $block-radius;
-    margin: 0 8px;
+    margin: 0 8px 16px;
     cursor: pointer;
 
     &:hover {

@@ -24,8 +24,9 @@ body {
 /*  2. Selection
 /*  --------------------------------------------------------------*/
 *::selection {
-  background: $link;
-  color: $font-color;
+  font-size: 12px;
+  line-height: 15px;
+  color: $disabledText;
 
 }
 

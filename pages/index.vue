@@ -10,8 +10,34 @@
       <div class="content-body">
         <div class="content-body__sidebar">
           <div class="content-body__sidebar__wrapper">
-            <input type="text" v-model="newPhone" />
-            <button v-on:click="phones.push(newPhone)">Добавить</button>
+            <form class="content-body__sidebar__wrapper__form"
+                  v-on:submit.prevent="addNewCartItem">
+              <label for="name-item">Наименование товара</label>
+              <input
+                v-model="itemName"
+                id="name-item"
+                placeholder="Введите наименование товара"
+              >
+              <label for="text-item">Описание товара</label>
+              <textarea
+                v-model="itemText"
+                id="text-item"
+                placeholder="Введите описание товара"
+              ></textarea>
+              <label for="link-item">Ссылка на изображение товара</label>
+              <input
+                v-model="itemLink"
+                id="link-item"
+                placeholder="Введите ссылку"
+              >
+              <label for="price-item">Цена товара</label>
+              <input
+                v-model="itemPrice"
+                id="price-item"
+                placeholder="Введите цену"
+              >
+              <button>Добавить</button>
+            </form>
           </div>
         </div>
         <div class="content-body__main">
@@ -74,21 +100,14 @@ export default {
     }
   },
   methods: {
-    checkForm: function (e) {
-      if (this.name && this.age) {
-        return true;
-      }
-
-      this.errors = [];
-
-      if (!this.name) {
-        this.errors.push('Требуется указать имя.');
-      }
-      if (!this.age) {
-        this.errors.push('Требуется указать возраст.');
-      }
-
-      e.preventDefault();
+    addNewCartItem: function () {
+      this.CartItemList.push({
+        image: '/_nuxt/static/images/image.jpg',
+        title: this.itemName,
+        text: this.itemText,
+        price: this.itemPrice,
+        currency: 'руб.',
+      })
     },
     onHover() {
       console.log('hover');
@@ -118,7 +137,7 @@ export default {
   }
   .content-header {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     margin: 0 8px;
     h1  {
@@ -132,21 +151,80 @@ export default {
     flex-flow: row wrap;
     &__sidebar {
       width: 25%;
-      flex-grow: 1;
+      box-sizing:border-box;
+      //flex-grow: 1;
       flex-shrink: 0;
-      background: #FFFEFB;
-      box-shadow: $block-shadow;
-      border-radius: $block-radius;
+      padding: 0 8px;
       &__wrapper {
         padding: 24px;
-        margin: 0 8px;
+        background: #FFFEFB;
+        box-shadow: $block-shadow;
+        border-radius: $block-radius;
+        &__form {
+          display: flex;
+          flex-direction: column;
+          label {
+            font-family: $default-font;
+            font-size: 10px;
+            line-height: 13px;
+            letter-spacing: -0.02em;
+            color: $label;
+            margin-bottom: 4px;
+          }
+          input {
+            font-family: $default-font;
+            width: auto;
+            margin-bottom: 16px;
+            padding: 10px 16px 11px 16px;
+            background: #FFFEFB;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            border: none;
+            ::placeholder {
+              font-family: $default-font;
+              font-size: 12px;
+              line-height: 15px;
+              color: $disabledText;
+            }
+          }
+          textarea {
+            font-family: $default-font;
+            height: 108px;
+            resize: none;
+            rows: 5;
+            margin-bottom: 16px;
+            padding: 10px 16px 11px 16px;
+            background: #FFFEFB;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            border: none;
+          }
+          button {
+            background: $disabled;
+            border-radius: 10px;
+            border: none;
+            padding: 10px 10px 11px 10px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 15px;
+            text-align: center;
+            letter-spacing: -0.02em;
+            color: $disabledText;
+            &:hover {
+              box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+          }
+        }
       }
     }
     &__main {
       width: 75%;
       flex-grow: 3;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
+      flex-wrap: wrap;
     }
 
   }
