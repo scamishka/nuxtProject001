@@ -9,16 +9,21 @@
       </div>
       <div class="content-body">
         <div class="content-body__sidebar">
-          <SidebarBlock/>
+          <div class="content-body__sidebar__wrapper">
+            <input type="text" v-model="newPhone" />
+            <button v-on:click="phones.push(newPhone)">Добавить</button>
+          </div>
         </div>
         <div class="content-body__main">
           <CartItem v-for="(item, key) in CartItemList"
+                    v-bind:key="key"
                     v-bind:image="item.image"
                     v-bind:title="item.title"
                     v-bind:text="item.text"
                     v-bind:price="item.price"
                     v-bind:currency="item.currency"
                     :class="HoverClass"
+                    v-on:remove="CartItemList.splice(key, 1)"
           />
         </div>
       </div>
@@ -27,14 +32,15 @@
 </template>
 
 <script>
-import SidebarBlock from "../components/SidebarBlock";
 import CartItem from "../components/CartItem";
+import CreateCartForm from "../components/createCartForm";
 export default {
   name: 'IndexPage',
-  components: {CartItem, SidebarBlock},
+  components: {CartItem},
   data() {
     return {
       HoverClass: '',
+      newItem: {},
       CartItemList: [
         {
           image: require('@/static/images/image.jpg'),
@@ -60,10 +66,30 @@ export default {
           price: 10000,
           currency: 'руб.'
         }
-      ]
+      ],
+      errors: [],
+      name: null,
+      age: null,
+      movie: null
     }
   },
   methods: {
+    checkForm: function (e) {
+      if (this.name && this.age) {
+        return true;
+      }
+
+      this.errors = [];
+
+      if (!this.name) {
+        this.errors.push('Требуется указать имя.');
+      }
+      if (!this.age) {
+        this.errors.push('Требуется указать возраст.');
+      }
+
+      e.preventDefault();
+    },
     onHover() {
       console.log('hover');
       this.HoverClass = 'hover'
@@ -71,6 +97,9 @@ export default {
     leaveHover() {
       console.log('off hover');
       this.HoverClass = '';
+    },
+    addItem(productItem) {
+      this.items.push(productItem)
     }
   }
 }
@@ -89,7 +118,7 @@ export default {
   }
   .content-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     margin: 0 8px;
     h1  {
@@ -108,6 +137,10 @@ export default {
       background: #FFFEFB;
       box-shadow: $block-shadow;
       border-radius: $block-radius;
+      &__wrapper {
+        padding: 24px;
+        margin: 0 8px;
+      }
     }
     &__main {
       width: 75%;
@@ -115,7 +148,9 @@ export default {
       display: flex;
       justify-content: space-between;
     }
+
   }
+
 }
 
 </style>

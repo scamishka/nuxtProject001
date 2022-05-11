@@ -18,6 +18,11 @@
         </div>
       </div>
     </div>
+    <div class="item__delete-icon">
+      <button class="item__delete-icon__button" v-on:click="$emit('remove')">
+
+      </button>
+    </div>
   </div>
 </template>
 
@@ -25,6 +30,10 @@
 export default {
   name: "CartItem",
   props: {
+    key: {
+      type: Number,
+      default: 0
+    },
     image: {
       type: String,
       default: ''
@@ -44,6 +53,11 @@ export default {
     currency: {
       type: String,
       default: 'руб.'
+    },
+    data() {
+      return {
+        basketImage: {backgroundImage: "url(~images/basket.png)"}
+      }
     }
   }
 }
@@ -52,8 +66,9 @@ export default {
 <style lang="scss" scoped>
 
   .item {
+    position: relative;
     flex-grow: 1;
-    min-width: 100px;
+    max-width: 33%;
     min-height: 200px;
     background: #FFFEFB;
     box-shadow: $block-shadow;
@@ -96,6 +111,26 @@ export default {
           font-weight: 600;
           line-height: 30px;
           margin: 0;
+        }
+      }
+    }
+    &__delete-icon {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      width: 32px;
+      height: 32px;
+      background: $danger;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      &__button {
+        width: 100%;
+        height: 100%;
+        background: none;
+        border: none;
+        border-radius: 10px;
+        &:hover {
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
         }
       }
     }
